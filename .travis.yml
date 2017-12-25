@@ -21,6 +21,7 @@ matrix:
 
 before_script:
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
+  - travis_retry composer dump-autoload --optimize
 
 script:
   - vendor/bin/phpcs --standard=psr2 ./source --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1
