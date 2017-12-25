@@ -33,6 +33,6 @@
     },
     "scripts": {
         "test": "phpunit",
-        "cs": "phpcs --standard=psr2 source/"
+        "cs": "phpcs --standard=psr2 ./source"
     }
 }
