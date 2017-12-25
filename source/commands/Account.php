@@ -40,15 +40,16 @@ class Account extends BaseCommand {
 
     /**
      * Set expansion version for specified account
-     * @param int $account
+     * @param string $account
      * @param int $addon
      * @return mixed
      */
-    public function setAddon(int $account, int $addon) {
+    public function setAddon(string $account, int $addon) {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
     /**
+     * Set Game Mater Level For Account
      * @param string $account
      * @param int $level
      * @param int $realm

@@ -38,10 +38,10 @@ class GM extends BaseCommand {
 
     /**
      * Send notification ot all Game Masters
-     * @param $notification
+     * @param string $notification
      * @return array|string
      */
-    public function notify($notification) {
+    public function notify(string $notification) {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
