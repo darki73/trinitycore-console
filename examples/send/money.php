@@ -1,11 +1,13 @@
 <?php
 use FreedomCore\TrinityCore\Console\Client;
 
-function bronzeToGold(int $goldAmount) : int {
+function bronzeToGold(int $goldAmount) : int
+{
     return $goldAmount * 100 * 100;
 }
 
-function bronzeToSilver(int $silverAmount) : int {
+function bronzeToSilver(int $silverAmount) : int
+{
     return $silverAmount * 100;
 }
 

@@ -5,6 +5,7 @@ use FreedomCore\TrinityCore\Console\Abstracts\BaseCommand;
 /**
  * Class BNetAccount
  * @package FreedomCore\TrinityCore\Console\Commands
+ * @codeCoverageIgnore
  */
 class BNetAccount extends BaseCommand
 {

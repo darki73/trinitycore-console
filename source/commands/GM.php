@@ -5,6 +5,7 @@ use FreedomCore\TrinityCore\Console\Abstracts\BaseCommand;
 /**
  * Class GM
  * @package FreedomCore\TrinityCore\Console\Commands
+ * @codeCoverageIgnore
  */
 class GM extends BaseCommand
 {

@@ -11,7 +11,7 @@ abstract class BaseClient
      * Package Version
      * @var string
      */
-    const VERSION = '1.0.3';
+    const VERSION = '1.0.4';
 
     /**
      * Server Address
@@ -25,6 +25,10 @@ abstract class BaseClient
      */
     protected $serverPort = 7878;
 
+    /**
+     * SoapClient Instance
+     * @var null|\SoapClient
+     */
     protected $client = null;
 
     /**
@@ -55,6 +59,42 @@ abstract class BaseClient
         if ($createNow) {
             $this->createConnection();
         }
+    }
+
+    /**
+     * Set username variable
+     * @param string $username
+     */
+    public function setUsername(string $username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * Get username variable
+     * @return string
+     */
+    public function getUsername() : string
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set password variable
+     * @param string $password
+     */
+    public function setPassword(string $password)
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * Get password variable
+     * @return string
+     */
+    public function getPassword() : string
+    {
+        return $this->password;
     }
 
     /**
@@ -103,7 +143,7 @@ abstract class BaseClient
      */
     public function getVersion() : string
     {
-        return Client::VERSION;
+        return BaseClient::VERSION;
     }
 
     /**
@@ -133,6 +173,7 @@ abstract class BaseClient
     /**
      * Check if SOAP extension is enabled
      * @throws \Exception
+     * @codeCoverageIgnore
      */
     protected function isSoapEnabled()
     {
@@ -143,6 +184,7 @@ abstract class BaseClient
 
     /**
      * Validate Connection Settings
+     * @codeCoverageIgnore
      */
     protected function validateSettings()
     {

@@ -5,6 +5,7 @@ use FreedomCore\TrinityCore\Console\Abstracts\BaseCommand;
 /**
  * Class Reset
  * @package FreedomCore\TrinityCore\Console\Commands
+ * @codeCoverageIgnore
  */
 class Reset extends BaseCommand
 {

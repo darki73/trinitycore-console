@@ -49,13 +49,42 @@ abstract class BaseCommand
     }
 
     /**
+     * Get Command Name
+     * @return string
+     */
+    public function getCommandName() : string
+    {
+        return $this->command;
+    }
+
+    /**
+     * Get Command Methods
+     * @return array
+     */
+    public function getCommandMethods() : array
+    {
+        return $this->methods;
+    }
+
+    /**
      * Execute Help Command
      * @param string $methodName
-     * @return string
+     * @return array
+     * @codeCoverageIgnore
      */
     public function help(string $methodName = '')
     {
         return $this->processOutput($this->clientInstance->executeCommand(new \SoapParam(trim(sprintf('help %s %s', $this->command, $methodName)), 'command')), true);
+    }
+
+    /**
+     * Add quotes to string
+     * @param string $string
+     * @return string
+     */
+    public function inQuotes(string $string) : string
+    {
+        return '"' . $string . '"';
     }
 
     /**
@@ -72,7 +101,20 @@ abstract class BaseCommand
     protected function prepareMethods()
     {
         $globalMethods = get_class_methods(get_called_class());
-        $classMethods = array_diff($globalMethods, ['__construct', 'prepareCommand', 'prepareMethods', 'generateCommand', 'generateQueryString', 'executeCommand', 'processOutput', 'help', 'inQuotes', 'parseCommand']);
+        $classMethods = array_diff($globalMethods, [
+            '__construct',
+            'prepareCommand',
+            'prepareMethods',
+            'generateCommand',
+            'generateQueryString',
+            'executeCommand',
+            'processOutput',
+            'help',
+            'inQuotes',
+            'parseCommand',
+            'getCommandName',
+            'getCommandMethods'
+        ]);
         foreach ($classMethods as $method) {
             $command = $this->generateCommand($method);
             $this->methods[$method] = [
@@ -113,20 +155,11 @@ abstract class BaseCommand
     }
 
     /**
-     * Add quotes to string
-     * @param string $string
-     * @return string
-     */
-    protected function inQuotes(string $string) : string
-    {
-        return '"' . $string . '"';
-    }
-
-    /**
      * Execute Command
      * @param string $methodName
      * @param array $parameters
      * @return array|string
+     * @codeCoverageIgnore
      */
     protected function executeCommand(string $methodName, array $parameters)
     {
@@ -159,6 +192,7 @@ abstract class BaseCommand
      * @param string $commandOutput
      * @param bool $helpFunction
      * @return array
+     * @codeCoverageIgnore
      */
     protected function processOutput(string $commandOutput, bool $helpFunction = false)
     {

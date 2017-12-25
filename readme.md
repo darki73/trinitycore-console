@@ -165,13 +165,13 @@ Current implementation of the console client has the following ***'endpoints'***
 
 ### $console->send()
 * **items** - Send Items To The Player  
-`$console->items(string $playerName, string $mailSubject, string $mailText, Items $items);`
+`$console->send()->items(string $playerName, string $mailSubject, string $mailText, Items $items);`
 * **mail** - Send mail to the player  
-`$console->mail(string $playerName, string $mailSubject, string $mailText);`
+`$console->send()->mail(string $playerName, string $mailSubject, string $mailText);`
 * **message** - Send message to the player which will appear in the middle of the screen  
-`$console->message(string $playerName, string $message);`
+`$console->send()->message(string $playerName, string $message);`
 * **money** - Send money to the player  
-`$console->money(string $playerName, string $mailSubject, string $mailText, int $amount);`
+`$console->send()->money(string $playerName, string $mailSubject, string $mailText, int $amount);`
 
 #### $console->server()
 * **corpses** - Trigger corpses expire check in world  

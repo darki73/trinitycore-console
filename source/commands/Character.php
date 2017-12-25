@@ -5,6 +5,7 @@ use FreedomCore\TrinityCore\Console\Abstracts\BaseCommand;
 /**
  * Class Player
  * @package FreedomCore\TrinityCore\Console\Commands
+ * @codeCoverageIgnore
  */
 class Character extends BaseCommand
 {

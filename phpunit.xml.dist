@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
-         backupGlobals="false"
+<phpunit backupGlobals="false"
          backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
          colors="true"
-         verbose="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false">
+         stopOnFailure="false"
+         verbose="true">
     <testsuites>
-        <testsuite name=":vendor Test Suite">
-            <directory>tests</directory>
+        <testsuite name=":vendor Feature Tests Suite">
+            <directory suffix="Test.php">./tests/feature</directory>
+        </testsuite>
+
+        <testsuite name=":vendor Unit Tests Suite">
+            <directory suffix="Test.php">./tests/unit</directory>
         </testsuite>
     </testsuites>
     <filter>
-        <whitelist>
+        <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">source/</directory>
         </whitelist>
     </filter>

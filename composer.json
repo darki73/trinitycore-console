@@ -21,11 +21,12 @@
         "scrutinizer/ocular": "^1.1",
         "doctrine/dbal": "^2.3",
         "phpdocumentor/phpdocumentor": "2.*",
-        "squizlabs/php_codesniffer": "^3.2"
+        "squizlabs/php_codesniffer": "^3.2",
+        "codedungeon/phpunit-result-printer": "^0.4.4"
     },
     "autoload-dev": {
         "psr-4": {
-            ":vendor\\:package_name\\": "tests"
+            "FreedomCore\\TrinityCore\\Console\\Tests\\": "tests"
         }
     },
     "require": {

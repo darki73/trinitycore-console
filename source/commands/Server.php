@@ -5,6 +5,7 @@ use FreedomCore\TrinityCore\Console\Abstracts\BaseCommand;
 /**
  * Class Server
  * @package FreedomCore\TrinityCore\Console\Commands
+ * @codeCoverageIgnore
  */
 class Server extends BaseCommand
 {

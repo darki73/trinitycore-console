@@ -31,14 +31,32 @@ class Item
     }
 
     /**
+     * Get Item ID
+     * @return int
+     */
+    public function getID() : int
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get Item Quantity
+     * @return int
+     */
+    public function getQuantity() : int
+    {
+        return $this->count;
+    }
+
+    /**
      * Convert Class Object To Array
      * @return array
      */
     public function toArray() : array
     {
         return [
-            $this->id,
-            $this->count
+            'id'    =>  $this->id,
+            'count' =>  $this->count
         ];
     }
 

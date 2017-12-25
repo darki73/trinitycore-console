@@ -6,6 +6,7 @@ use FreedomCore\TrinityCore\Console\Classes\Items;
 /**
  * Class Send
  * @package FreedomCore\TrinityCore\Console\Commands
+ * @codeCoverageIgnore
  */
 class Send extends BaseCommand
 {

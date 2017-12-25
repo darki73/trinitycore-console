@@ -19,7 +19,28 @@ class Items
      */
     public function __construct(...$items)
     {
+        if (isset($items[0][0])) {
+            $items = $items[0];
+        }
         $this->items = $items;
+    }
+
+    /**
+     * Get Items
+     * @return array
+     */
+    public function getItems() : array
+    {
+        return $this->items;
+    }
+
+    /**
+     * Count how many items we are created
+     * @return int
+     */
+    public function count() : int
+    {
+        return count($this->items);
     }
 
     /**
@@ -30,6 +51,9 @@ class Items
     {
         $items = [];
         foreach ($this->items as $item) {
+            /**
+             * @var $item Item
+             */
             $items[] = $item->toArray();
         }
         return $items;
