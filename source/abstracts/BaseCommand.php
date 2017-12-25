@@ -67,7 +67,7 @@ abstract class BaseCommand {
      */
     protected function prepareMethods() {
         $globalMethods = get_class_methods(get_called_class());
-        $classMethods = array_diff($globalMethods, ['__construct', 'prepareCommand', 'prepareMethods', 'generateCommand', 'generateQueryString', 'executeCommand', 'processOutput', 'help', 'inQuotes']);
+        $classMethods = array_diff($globalMethods, ['__construct', 'prepareCommand', 'prepareMethods', 'generateCommand', 'generateQueryString', 'executeCommand', 'processOutput', 'help', 'inQuotes', 'parseCommand']);
         foreach ($classMethods as $method) {
             $command = $this->generateCommand($method);
             $this->methods[$method] = [
@@ -85,31 +85,10 @@ abstract class BaseCommand {
     protected function generateCommand(string $method) : string {
         preg_match_all('/((?:^|[A-Z])[a-z]+)/', $method, $matches);
         $elements = array_map('strtolower', $matches[0]);
-        if (!in_array($method, $this->doNotPrefix))
-            $command = implode(' ', array_merge([$this->command], $elements));
-        else
-            $command = implode(' ', $elements);
+        $command = (!in_array($method, $this->doNotPrefix)) ? implode(' ', array_merge([$this->command], $elements)) : implode(' ', $elements);
         if (in_array($method, $this->concatenate))
             $command = $this->command . $method;
-        if (strstr($command, 'gm level'))
-            $command = str_replace('gm level', 'gmlevel', $command);
-        if (strstr($command, 'game account create'))
-            $command = str_replace('game account create', 'gameaccountcreate', $command);
-        if (strstr($command, 'list game accounts'))
-            $command = str_replace('list game accounts', 'listgameaccounts', $command);
-        if (strstr($command, 'diff time'))
-            $command = str_replace('diff time', 'difftime', $command);
-        if (strstr($command, 'log level'))
-            $command = str_replace('log level', 'loglevel', $command);
-        if (strstr($command, 'save all'))
-            $command = str_replace('save all', 'saveall', $command);
-        if (strstr($command, 'name announce'))
-            $command = str_replace('name announce', 'nameannounce', $command);
-        if (strstr($command, 'change faction'))
-            $command = str_replace('change faction', 'changefaction', $command);
-        if (strstr($command, 'change race'))
-            $command = str_replace('change race', 'changerace', $command);
-        return trim($command);
+        return trim($this->parseCommand($command));
     }
 
     /**
@@ -163,11 +142,40 @@ abstract class BaseCommand {
         }
     }
 
+    /**
+     * Process Response
+     * @param string $commandOutput
+     * @param bool $helpFunction
+     * @return array
+     */
     protected function processOutput(string $commandOutput, bool $helpFunction = false) {
-        $responseToArray = array_filter(explode(PHP_EOL, $commandOutput));
-        dd(array_filter(explode(PHP_EOL, $commandOutput)));
+        return array_filter(explode(PHP_EOL, $commandOutput));
+    }
 
-        return '123';
+    /**
+     * Parse and Process Command
+     * @param string $command
+     * @return string
+     */
+    protected function parseCommand(string $command) : string {
+        $replacements = [
+            'gm level'              =>  'gmlevel',
+            'game account create'   =>  'gameaccountcreate',
+            'list game accounts'    =>  'listgameaccounts',
+            'diff time'             =>  'difftime',
+            'log level'             =>  'loglevel',
+            'save all'              =>  'saveall',
+            'name announce'         =>  'nameannounce',
+            'change faction'        =>  'changefaction',
+            'change race'           =>  'changerace'
+        ];
+        foreach ($replacements as $key => $value) {
+            if (strstr($command, $key)) {
+                $command = str_replace($key, $value, $command);
+                break;
+            }
+        }
+        return $command;
     }
 
 }
