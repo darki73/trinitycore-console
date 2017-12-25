@@ -6,7 +6,8 @@ use FreedomCore\TrinityCore\Console\Abstracts\BaseCommand;
  * Class Account
  * @package FreedomCore\TrinityCore\Console\Commands
  */
-class Account extends BaseCommand {
+class Account extends BaseCommand
+{
 
     /**
      * Create new account
@@ -14,7 +15,8 @@ class Account extends BaseCommand {
      * @param string $password
      * @return mixed
      */
-    public function create(string $account, string $password) {
+    public function create(string $account, string $password)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -23,7 +25,8 @@ class Account extends BaseCommand {
      * @param string $account
      * @return mixed
      */
-    public function delete(string $account) {
+    public function delete(string $account)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -34,7 +37,8 @@ class Account extends BaseCommand {
      * @param string $repeatPassword
      * @return mixed
      */
-    public function password(string $oldPassword, string $newPassword, string $repeatPassword) {
+    public function password(string $oldPassword, string $newPassword, string $repeatPassword)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -44,7 +48,8 @@ class Account extends BaseCommand {
      * @param int $addon
      * @return mixed
      */
-    public function setAddon(string $account, int $addon) {
+    public function setAddon(string $account, int $addon)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -55,7 +60,8 @@ class Account extends BaseCommand {
      * @param int $realm
      * @return mixed
      */
-    public function setGmLevel(string $account, int $level, int $realm = -1) {
+    public function setGmLevel(string $account, int $level, int $realm = -1)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -66,7 +72,8 @@ class Account extends BaseCommand {
      * @param string $repeatRegMail
      * @return array|string
      */
-    public function setSecRegmail(string $account, string $regMail, string $repeatRegMail) {
+    public function setSecRegmail(string $account, string $regMail, string $repeatRegMail)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -77,7 +84,8 @@ class Account extends BaseCommand {
      * @param string $repeatEmail
      * @return array|string
      */
-    public function setSecEmail(string $account, string $email, string $repeatEmail) {
+    public function setSecEmail(string $account, string $email, string $repeatEmail)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -88,8 +96,8 @@ class Account extends BaseCommand {
      * @param string $repeatPassword
      * @return mixed
      */
-    public function setPassword(string $oldPassword, string $newPassword, string $repeatPassword) {
+    public function setPassword(string $oldPassword, string $newPassword, string $repeatPassword)
+    {
         return $this->password($oldPassword, $newPassword, $repeatPassword);
     }
-
 }

@@ -6,7 +6,8 @@ use FreedomCore\TrinityCore\Console\Abstracts\BaseCommand;
  * Class GM
  * @package FreedomCore\TrinityCore\Console\Commands
  */
-class GM extends BaseCommand {
+class GM extends BaseCommand
+{
 
     /**
      * @inheritdoc
@@ -23,7 +24,8 @@ class GM extends BaseCommand {
      * @param string $announcement
      * @return array|string
      */
-    public function announce(string $announcement) {
+    public function announce(string $announcement)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -32,7 +34,8 @@ class GM extends BaseCommand {
      * @param string $announcement
      * @return array|string
      */
-    public function nameAnnounce(string $announcement) {
+    public function nameAnnounce(string $announcement)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -41,8 +44,8 @@ class GM extends BaseCommand {
      * @param string $notification
      * @return array|string
      */
-    public function notify(string $notification) {
+    public function notify(string $notification)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
-
 }

@@ -6,7 +6,8 @@ use FreedomCore\TrinityCore\Console\Abstracts\BaseCommand;
  * Class Server
  * @package FreedomCore\TrinityCore\Console\Commands
  */
-class Server extends BaseCommand {
+class Server extends BaseCommand
+{
 
     /**
      * @inheritdoc
@@ -22,7 +23,8 @@ class Server extends BaseCommand {
      * Trigger corpses expire check in world
      * @return array|string
      */
-    public function corpses() {
+    public function corpses()
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -31,7 +33,8 @@ class Server extends BaseCommand {
      * Exit code 0
      * @return array|string
      */
-    public function exit() {
+    public function exit()
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -39,7 +42,8 @@ class Server extends BaseCommand {
      * Display server version and the number of connected players
      * @return array|string
      */
-    public function info() {
+    public function info()
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -47,7 +51,8 @@ class Server extends BaseCommand {
      * Show message of the day
      * @return array|string
      */
-    public function motd() {
+    public function motd()
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -58,7 +63,8 @@ class Server extends BaseCommand {
      * @param string $parameter
      * @return array|string
      */
-    public function plimit($parameter = '') {
+    public function plimit($parameter = '')
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -67,7 +73,8 @@ class Server extends BaseCommand {
      * @param int $diffTime
      * @return array|string
      */
-    public function setDiffTime(int $diffTime) {
+    public function setDiffTime(int $diffTime)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -78,13 +85,16 @@ class Server extends BaseCommand {
      * @param int $logLevel
      * @return array|string
      */
-    public function setLogLevel(string $facility, string $name, int $logLevel) {
+    public function setLogLevel(string $facility, string $name, int $logLevel)
+    {
         $facilities = ['a', 'l'];
         $levels = range(0, 6);
-        if (!in_array($facility, $facilities))
+        if (!in_array($facility, $facilities)) {
             throw new \RuntimeException('Invalid type of facility, possible values are: a (appender), l (logger)');
-        if (in_array($logLevel, $levels))
+        }
+        if (in_array($logLevel, $levels)) {
             throw new \RuntimeException('Log level is out of range, possible values are between 0 (disabled) and 6');
+        }
         return $this->executeCommand(__FUNCTION__, [
             'facility'  =>  $facility,
             'name'      =>  $name,
@@ -97,7 +107,8 @@ class Server extends BaseCommand {
      * @param string $motd
      * @return array|string
      */
-    public function setMotd(string $motd) {
+    public function setMotd(string $motd)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -106,7 +117,8 @@ class Server extends BaseCommand {
      * @param bool $isClosed
      * @return array|string
      */
-    public function setClosed(bool $isClosed) {
+    public function setClosed(bool $isClosed)
+    {
         $closed = ($isClosed) ? 'on' : 'off';
         return $this->executeCommand(__FUNCTION__, ['isClosed' => $closed]);
     }
@@ -118,7 +130,8 @@ class Server extends BaseCommand {
      * @param int $code Exit code
      * @return array|string
      */
-    public function shutdown(int $timer, bool $force = false, int $code = 0) {
+    public function shutdown(int $timer, bool $force = false, int $code = 0)
+    {
         $force = ($force) ? 'force' : '';
         return $this->executeCommand(__FUNCTION__, [
             'force' =>  $force,
@@ -130,7 +143,8 @@ class Server extends BaseCommand {
     /**
      * Cancel the restart/shutdown timer if any
      */
-    public function shutdownCancel() {
+    public function shutdownCancel()
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -138,7 +152,8 @@ class Server extends BaseCommand {
      * Save all players.
      * @return array|string
      */
-    public function saveAll() {
+    public function saveAll()
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -147,7 +162,8 @@ class Server extends BaseCommand {
      * @param string $message
      * @return array|string
      */
-    public function notify(string $message) {
+    public function notify(string $message)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -156,8 +172,8 @@ class Server extends BaseCommand {
      * @param string $message
      * @return array|string
      */
-    public function announce(string $message) {
+    public function announce(string $message)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
-
 }

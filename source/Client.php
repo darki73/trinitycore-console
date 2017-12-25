@@ -14,7 +14,8 @@ use FreedomCore\TrinityCore\Console\Commands\Server;
  * Class Client
  * @package FreedomCore\TrinityCore\Console
  */
-class Client extends BaseClient {
+class Client extends BaseClient
+{
 
     /**
      * Client constructor.
@@ -23,7 +24,8 @@ class Client extends BaseClient {
      * @param boolean $createNow Should the connection be created as soon as possible
      * @throws \Exception
      */
-    public function __construct(string $username, string $password, bool $createNow = true) {
+    public function __construct(string $username, string $password, bool $createNow = true)
+    {
         parent::__construct($username, $password, $createNow);
     }
 
@@ -31,7 +33,8 @@ class Client extends BaseClient {
      * Get Account Command Interface
      * @return Account
      */
-    public function account() : Account {
+    public function account() : Account
+    {
         return (new Account($this->client));
     }
 
@@ -39,7 +42,8 @@ class Client extends BaseClient {
      * Get Bnet Command Interface
      * @return BNetAccount
      */
-    public function bnet() : BNetAccount {
+    public function bnet() : BNetAccount
+    {
         return (new BNetAccount($this->client));
     }
 
@@ -47,7 +51,8 @@ class Client extends BaseClient {
      * Get Character Command Interface
      * @return Character
      */
-    public function character() : Character {
+    public function character() : Character
+    {
         return (new Character($this->client));
     }
 
@@ -55,7 +60,8 @@ class Client extends BaseClient {
      * Get GM Command Interface
      * @return GM
      */
-    public function gm() : GM {
+    public function gm() : GM
+    {
         return (new GM($this->client));
     }
 
@@ -63,7 +69,8 @@ class Client extends BaseClient {
      * Get Guild Command Interface
      * @return Guild
      */
-    public function guild() : Guild {
+    public function guild() : Guild
+    {
         return (new Guild($this->client));
     }
 
@@ -71,7 +78,8 @@ class Client extends BaseClient {
      * Get LFG Command Interface
      * @return LFG
      */
-    public function lfg() : LFG {
+    public function lfg() : LFG
+    {
         return (new LFG($this->client));
     }
 
@@ -79,7 +87,8 @@ class Client extends BaseClient {
      * Get Reset Command Instance
      * @return Reset
      */
-    public function reset() : Reset {
+    public function reset() : Reset
+    {
         return (new Reset($this->client));
     }
 
@@ -87,8 +96,8 @@ class Client extends BaseClient {
      * Get Server Command Interface
      * @return Server
      */
-    public function server() : Server {
+    public function server() : Server
+    {
         return (new Server($this->client));
     }
-
 }

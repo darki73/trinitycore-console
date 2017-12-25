@@ -6,7 +6,8 @@ use FreedomCore\TrinityCore\Console\Abstracts\BaseCommand;
  * Class Player
  * @package FreedomCore\TrinityCore\Console\Commands
  */
-class Character extends BaseCommand {
+class Character extends BaseCommand
+{
 
     /**
      * @inheritdoc
@@ -27,10 +28,12 @@ class Character extends BaseCommand {
      * @param string $location
      * @return array|string
      */
-    public function unstuck(string $playerName, string $location = 'graveyard') {
+    public function unstuck(string $playerName, string $location = 'graveyard')
+    {
         $availableLocations = ['inn', 'graveyard', 'startzone'];
-        if (!in_array($location, $availableLocations))
+        if (!in_array($location, $availableLocations)) {
             $location = $availableLocations[1];
+        }
         return $this->executeCommand(__FUNCTION__, ['playerName' => $playerName, 'location' => $location]);
     }
 
@@ -39,7 +42,8 @@ class Character extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function unmute(string $playerName) {
+    public function unmute(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -49,7 +53,8 @@ class Character extends BaseCommand {
      * @param string $function
      * @return array|string
      */
-    public function unban(string $playerName, $function = 'character') {
+    public function unban(string $playerName, $function = 'character')
+    {
         return $this->executeCommand(__FUNCTION__, ['function' => $function, 'playerName' => $playerName]);
     }
 
@@ -59,7 +64,8 @@ class Character extends BaseCommand {
      * @param string $function
      * @return array|string
      */
-    public function ban(string $playerName, $function = 'character') {
+    public function ban(string $playerName, $function = 'character')
+    {
         return $this->executeCommand(__FUNCTION__, ['function' => $function, 'playerName' => $playerName]);
     }
 
@@ -70,7 +76,8 @@ class Character extends BaseCommand {
      * @param string $reason
      * @return array|string
      */
-    public function mute(string $playerName, int $minutes, $reason = 'No reason given!') {
+    public function mute(string $playerName, int $minutes, $reason = 'No reason given!')
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -80,7 +87,8 @@ class Character extends BaseCommand {
      * @param string $reason
      * @return array|string
      */
-    public function kick(string $playerName, string $reason = 'No reason given!') {
+    public function kick(string $playerName, string $reason = 'No reason given!')
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -89,7 +97,8 @@ class Character extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function customize(string $playerName) {
+    public function customize(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -98,7 +107,8 @@ class Character extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function changeFaction(string $playerName) {
+    public function changeFaction(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -107,7 +117,8 @@ class Character extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function changeRace(string $playerName) {
+    public function changeRace(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -116,7 +127,8 @@ class Character extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function erase(string $playerName) {
+    public function erase(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -126,7 +138,8 @@ class Character extends BaseCommand {
      * @param int $level
      * @return array|string
      */
-    public function level(string $playerName, int $level = 1) {
+    public function level(string $playerName, int $level = 1)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -137,7 +150,8 @@ class Character extends BaseCommand {
      * @param string $newName
      * @return array|string
      */
-    public function rename(string $oldName, string $newName = '') {
+    public function rename(string $oldName, string $newName = '')
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -147,7 +161,8 @@ class Character extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function reputation(string $playerName) {
+    public function reputation(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -157,7 +172,8 @@ class Character extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function titles(string $playerName) {
+    public function titles(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -166,7 +182,8 @@ class Character extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function deletedDelete(string $playerName = '') {
+    public function deletedDelete(string $playerName = '')
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -175,7 +192,8 @@ class Character extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function deletedList(string $playerName = '') {
+    public function deletedList(string $playerName = '')
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -184,7 +202,8 @@ class Character extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function deletedRestore(string $playerName = '') {
+    public function deletedRestore(string $playerName = '')
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -194,8 +213,8 @@ class Character extends BaseCommand {
      * @param int $days
      * @return array|string
      */
-    public function deletedOld(string $playerName, int $days) {
+    public function deletedOld(string $playerName, int $days)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
-
 }

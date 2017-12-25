@@ -4,7 +4,8 @@
  * Class BaseCommand
  * @package FreedomCore\TrinityCore\Console\Abstracts
  */
-abstract class BaseCommand {
+abstract class BaseCommand
+{
 
     /**
      * Client Instance Object
@@ -40,7 +41,8 @@ abstract class BaseCommand {
      * BaseCommand constructor.
      * @param \SoapClient $client
      */
-    public function __construct(\SoapClient $client) {
+    public function __construct(\SoapClient $client)
+    {
         $this->clientInstance = $client;
         $this->prepareCommand();
         $this->prepareMethods();
@@ -51,21 +53,24 @@ abstract class BaseCommand {
      * @param string $methodName
      * @return string
      */
-    public function help(string $methodName = '') {
+    public function help(string $methodName = '')
+    {
         return $this->processOutput($this->clientInstance->executeCommand(new \SoapParam(trim(sprintf('help %s %s', $this->command, $methodName)), 'command')), true);
     }
 
     /**
      * Prepare Command Name Variable
      */
-    protected function prepareCommand() {
+    protected function prepareCommand()
+    {
         $this->command = strtolower((new \ReflectionClass(get_called_class()))->getShortName());
     }
 
     /**
      * Prepare Available Methods For Specified Command
      */
-    protected function prepareMethods() {
+    protected function prepareMethods()
+    {
         $globalMethods = get_class_methods(get_called_class());
         $classMethods = array_diff($globalMethods, ['__construct', 'prepareCommand', 'prepareMethods', 'generateCommand', 'generateQueryString', 'executeCommand', 'processOutput', 'help', 'inQuotes', 'parseCommand']);
         foreach ($classMethods as $method) {
@@ -82,12 +87,14 @@ abstract class BaseCommand {
      * @param string $method
      * @return string
      */
-    protected function generateCommand(string $method) : string {
+    protected function generateCommand(string $method) : string
+    {
         preg_match_all('/((?:^|[A-Z])[a-z]+)/', $method, $matches);
         $elements = array_map('strtolower', $matches[0]);
         $command = (!in_array($method, $this->doNotPrefix)) ? implode(' ', array_merge([$this->command], $elements)) : implode(' ', $elements);
-        if (in_array($method, $this->concatenate))
+        if (in_array($method, $this->concatenate)) {
             $command = $this->command . $method;
+        }
         return trim($this->parseCommand($command));
     }
 
@@ -97,9 +104,12 @@ abstract class BaseCommand {
      * @param string $method
      * @return string
      */
-    protected function generateQueryString(string $class, string $method) : string {
+    protected function generateQueryString(string $class, string $method) : string
+    {
         $reflection =  new \ReflectionMethod($class, $method);
-        return implode(' ', array_map(function( $item ) { return '%' . $item->getName() . '%'; }, $reflection->getParameters()));
+        return implode(' ', array_map(function ($item) {
+            return '%' . $item->getName() . '%';
+        }, $reflection->getParameters()));
     }
 
     /**
@@ -107,7 +117,8 @@ abstract class BaseCommand {
      * @param string $string
      * @return string
      */
-    protected function inQuotes(string $string) : string {
+    protected function inQuotes(string $string) : string
+    {
         return '"' . $string . '"';
     }
 
@@ -117,7 +128,8 @@ abstract class BaseCommand {
      * @param array $parameters
      * @return array|string
      */
-    protected function executeCommand(string $methodName, array $parameters) {
+    protected function executeCommand(string $methodName, array $parameters)
+    {
         $structure = [
             'class'         =>  get_called_class(),
             'method'        =>  $methodName,
@@ -148,7 +160,8 @@ abstract class BaseCommand {
      * @param bool $helpFunction
      * @return array
      */
-    protected function processOutput(string $commandOutput, bool $helpFunction = false) {
+    protected function processOutput(string $commandOutput, bool $helpFunction = false)
+    {
         return array_filter(explode(PHP_EOL, $commandOutput));
     }
 
@@ -157,7 +170,8 @@ abstract class BaseCommand {
      * @param string $command
      * @return string
      */
-    protected function parseCommand(string $command) : string {
+    protected function parseCommand(string $command) : string
+    {
         $replacements = [
             'gm level'              =>  'gmlevel',
             'game account create'   =>  'gameaccountcreate',
@@ -177,5 +191,4 @@ abstract class BaseCommand {
         }
         return $command;
     }
-
 }

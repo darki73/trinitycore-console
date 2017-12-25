@@ -4,7 +4,8 @@
  * Class BaseClient
  * @package FreedomCore\TrinityCore\Console\Abstracts
  */
-abstract class BaseClient {
+abstract class BaseClient
+{
 
     /**
      * Package Version
@@ -45,13 +46,15 @@ abstract class BaseClient {
      * @param boolean $createNow Should the connection be created as soon as possible
      * @throws \Exception
      */
-    public function __construct(string $username, string $password, bool $createNow = true) {
+    public function __construct(string $username, string $password, bool $createNow = true)
+    {
         $this->isSoapEnabled();
         $this->username = $username;
         $this->password = $password;
         $this->validateSettings();
-        if ($createNow)
+        if ($createNow) {
             $this->createConnection();
+        }
     }
 
     /**
@@ -59,7 +62,8 @@ abstract class BaseClient {
      * @param string $serverAddress
      * @return BaseClient
      */
-    public function setAddress(string $serverAddress) : BaseClient {
+    public function setAddress(string $serverAddress) : BaseClient
+    {
         $this->serverAddress = $serverAddress;
         return $this;
     }
@@ -68,7 +72,8 @@ abstract class BaseClient {
      * Get Server Address
      * @return string
      */
-    public function getAddress() : string {
+    public function getAddress() : string
+    {
         return $this->serverAddress;
     }
 
@@ -77,7 +82,8 @@ abstract class BaseClient {
      * @param int $serverPort
      * @return BaseClient
      */
-    public function setPort(int $serverPort) : BaseClient {
+    public function setPort(int $serverPort) : BaseClient
+    {
         $this->serverPort = $serverPort;
         return $this;
     }
@@ -86,7 +92,8 @@ abstract class BaseClient {
      * Get Server Port
      * @return int
      */
-    public function getPort() : int {
+    public function getPort() : int
+    {
         return $this->serverPort;
     }
 
@@ -94,14 +101,16 @@ abstract class BaseClient {
      * Get Client Version
      * @return string
      */
-    public function getVersion() : string {
+    public function getVersion() : string
+    {
         return Client::VERSION;
     }
 
     /**
      * Initialize Connection To The Server
      */
-    public function createConnection() {
+    public function createConnection()
+    {
         $this->client = new \SoapClient(null, [
             'location'      =>  'http://' . $this->serverAddress . ':' . $this->serverPort . '/',
             'uri'           =>  'urn:TC',
@@ -116,7 +125,8 @@ abstract class BaseClient {
      * Get Client Instance
      * @return \SoapClient
      */
-    public function getClient() : \SoapClient {
+    public function getClient() : \SoapClient
+    {
         return $this->client;
     }
 
@@ -124,25 +134,29 @@ abstract class BaseClient {
      * Check if SOAP extension is enabled
      * @throws \Exception
      */
-    protected function isSoapEnabled() {
-        if (!extension_loaded('soap'))
+    protected function isSoapEnabled()
+    {
+        if (!extension_loaded('soap')) {
             throw new \Exception('FreedomNet requires SOAP extension to be enabled.' . PHP_EOL . 'Please enable SOAP extension');
+        }
     }
 
     /**
      * Validate Connection Settings
      */
-    protected function validateSettings() {
-        if ($this->serverAddress === null)
+    protected function validateSettings()
+    {
+        if ($this->serverAddress === null) {
             throw new \RuntimeException('SOAP Address cannot be null!');
-        if ($this->serverPort === null)
+        }
+        if ($this->serverPort === null) {
             throw new \RuntimeException('SOAP Port cannot be null!');
-        if ($this->username === null)
+        }
+        if ($this->username === null) {
             throw new \RuntimeException('SOAP Username cannot be null!');
-        if ($this->password === null)
+        }
+        if ($this->password === null) {
             throw new \RuntimeException('SOAP Password cannot be null!');
-
+        }
     }
-
-
 }

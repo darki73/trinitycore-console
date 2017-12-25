@@ -6,13 +6,15 @@ use FreedomCore\TrinityCore\Console\Abstracts\BaseCommand;
  * Class LFG
  * @package FreedomCore\TrinityCore\Console\Commands
  */
-class LFG extends BaseCommand {
+class LFG extends BaseCommand
+{
 
     /**
      * Show information about current LFG queues
      * @return array|string
      */
-    public function queue() {
+    public function queue()
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -20,7 +22,8 @@ class LFG extends BaseCommand {
      * Cleans current queue, only for DEBUG
      * @return array|string
      */
-    public function clean() {
+    public function clean()
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -30,8 +33,8 @@ class LFG extends BaseCommand {
      * @param string $value
      * @return array|string
      */
-    public function options($value = '') {
+    public function options($value = '')
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
-
 }

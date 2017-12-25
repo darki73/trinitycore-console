@@ -6,14 +6,16 @@ use FreedomCore\TrinityCore\Console\Abstracts\BaseCommand;
  * Class Reset
  * @package FreedomCore\TrinityCore\Console\Commands
  */
-class Reset extends BaseCommand {
+class Reset extends BaseCommand
+{
 
     /**
      * Reset achievements for specified player
      * @param string $playerName
      * @return array|string
      */
-    public function achievements(string $playerName) {
+    public function achievements(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -22,7 +24,8 @@ class Reset extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function honor(string $playerName) {
+    public function honor(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -31,7 +34,8 @@ class Reset extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function level(string $playerName) {
+    public function level(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -40,7 +44,8 @@ class Reset extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function spells(string $playerName) {
+    public function spells(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -49,7 +54,8 @@ class Reset extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function stats(string $playerName) {
+    public function stats(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -58,7 +64,8 @@ class Reset extends BaseCommand {
      * @param string $playerName
      * @return array|string
      */
-    public function talents(string $playerName) {
+    public function talents(string $playerName)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
 
@@ -67,8 +74,8 @@ class Reset extends BaseCommand {
      * @param string $type
      * @return array|string
      */
-    public function all(string $type) {
+    public function all(string $type)
+    {
         return $this->executeCommand(__FUNCTION__, get_defined_vars());
     }
-
 }
