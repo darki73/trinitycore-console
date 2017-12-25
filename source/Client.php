@@ -8,6 +8,7 @@ use FreedomCore\TrinityCore\Console\Commands\Guild;
 use FreedomCore\TrinityCore\Console\Commands\LFG;
 use FreedomCore\TrinityCore\Console\Commands\Character;
 use FreedomCore\TrinityCore\Console\Commands\Reset;
+use FreedomCore\TrinityCore\Console\Commands\Send;
 use FreedomCore\TrinityCore\Console\Commands\Server;
 
 /**
@@ -30,7 +31,7 @@ class Client extends BaseClient
     }
 
     /**
-     * Get Account Command Interface
+     * Get Account Command Instance
      * @return Account
      */
     public function account() : Account
@@ -39,7 +40,7 @@ class Client extends BaseClient
     }
 
     /**
-     * Get Bnet Command Interface
+     * Get Bnet Command Instance
      * @return BNetAccount
      */
     public function bnet() : BNetAccount
@@ -48,7 +49,7 @@ class Client extends BaseClient
     }
 
     /**
-     * Get Character Command Interface
+     * Get Character Command Instance
      * @return Character
      */
     public function character() : Character
@@ -57,7 +58,7 @@ class Client extends BaseClient
     }
 
     /**
-     * Get GM Command Interface
+     * Get GM Command Instance
      * @return GM
      */
     public function gm() : GM
@@ -66,7 +67,7 @@ class Client extends BaseClient
     }
 
     /**
-     * Get Guild Command Interface
+     * Get Guild Command Instance
      * @return Guild
      */
     public function guild() : Guild
@@ -75,7 +76,7 @@ class Client extends BaseClient
     }
 
     /**
-     * Get LFG Command Interface
+     * Get LFG Command Instance
      * @return LFG
      */
     public function lfg() : LFG
@@ -93,7 +94,16 @@ class Client extends BaseClient
     }
 
     /**
-     * Get Server Command Interface
+     * Get Send Command Instance
+     * @return Send
+     */
+    public function send() : Send
+    {
+        return (new Send($this->client));
+    }
+    
+    /**
+     * Get Server Command Instance
      * @return Server
      */
     public function server() : Server

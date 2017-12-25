@@ -35,19 +35,19 @@ Current implementation of the console client has the following ***'endpoints'***
 
 #### Client Options
 * **setAddress** - Set Server Address  
-`$client->setAddress(string $serverAddress);`
+`$console->setAddress(string $serverAddress);`
 * **getAddress** - Get Server Address  
-`$client->getAddress();`
+`$console->getAddress();`
 * **setPort** - Set Server Port  
-`$client->setPort(int $serverPort);`
+`$console->setPort(int $serverPort);`
 * **getPort** - Get Server Port  
-`$client->getPort();`
+`$console->getPort();`
 * **getVersion** - Get Client Version  
-`$client->getVersion();`
-* **createConnection** - Initialize Connection To The Server (needs to be invoked if address/port has been changed)
-`$client->createConnection();`
+`$console->getVersion();`
+* **createConnection** - Initialize Connection To The Server (needs to be invoked if address/port has been changed)  
+`$console->createConnection();`
 * **getClient** - Get Client Instance  
-`$client->getClient();`
+`$console->getClient();`
 
 #### $console->account()
 * **create()** - Create new account  
@@ -162,6 +162,16 @@ Current implementation of the console client has the following ***'endpoints'***
 `$result = $console->reset()->talents(string $playerName);`
 * **all** - Reset $type (talents/spells) for ALL players  
 `$result = $console->reset()->all(string $type);`
+
+### $console->send()
+* **items** - Send Items To The Player  
+`$console->items(string $playerName, string $mailSubject, string $mailText, Items $items);`
+* **mail** - Send mail to the player  
+`$console->mail(string $playerName, string $mailSubject, string $mailText);`
+* **message** - Send message to the player which will appear in the middle of the screen  
+`$console->message(string $playerName, string $message);`
+* **money** - Send money to the player  
+`$console->money(string $playerName, string $mailSubject, string $mailText, int $amount);`
 
 #### $console->server()
 * **corpses** - Trigger corpses expire check in world  
