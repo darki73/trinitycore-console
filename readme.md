@@ -1,6 +1,6 @@
 ## TrinityCore SOAP Console for PHP
 [![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](license.md)
+[![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
 [![Code Quality][ico-scrutinizer]][link-scrutinizer]
 [![Total Downloads][ico-downloads]][link-downloads]
