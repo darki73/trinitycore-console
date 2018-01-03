@@ -1,15 +1,23 @@
 <?php
 
 use FreedomCore\TrinityCore\Console\Client;
-use FreedomCore\TrinityCore\Console\Classes\Items;
-use FreedomCore\TrinityCore\Console\Classes\Item;
+use FreedomCore\TrinityCore\Support\Classes\Items;
+use FreedomCore\TrinityCore\Support\Classes\Item;
 
-$items = new Items(
-    new Item(49623),
-    new Item(22589),
-    new Item(19019, 1),
-    new Item(71086, 2)
-);
+$itemsData = [
+    49623   =>  1,
+    29314   =>  1,
+    21545   =>  5
+];
+
+$itemsArray = [];
+foreach ($itemsData as $itemID => $count) {
+    $item = new Item();
+    $item->setItemID($itemID);
+    $item->setCount($count);
+    $itemsArray[] = $item;
+}
+$items = new Items($itemsArray);
 
 $console = new Client('2#1', 'soapPassword');
 $console->send()->items('Playername', 'Mail Subject', 'Mail Body', $items);

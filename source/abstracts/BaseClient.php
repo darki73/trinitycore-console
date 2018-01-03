@@ -11,7 +11,7 @@ abstract class BaseClient
      * Package Version
      * @var string
      */
-    const VERSION = '1.0.4';
+    const VERSION = '1.0.5';
 
     /**
      * Server Address

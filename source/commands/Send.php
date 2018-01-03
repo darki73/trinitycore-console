@@ -1,7 +1,7 @@
 <?php namespace FreedomCore\TrinityCore\Console\Commands;
 
 use FreedomCore\TrinityCore\Console\Abstracts\BaseCommand;
-use FreedomCore\TrinityCore\Console\Classes\Items;
+use FreedomCore\TrinityCore\Support\Classes\Items;
 
 /**
  * Class Send

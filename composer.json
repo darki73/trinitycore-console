@@ -3,6 +3,10 @@
     "description": "TrinityCore Console Library",
     "keywords": ["freedomcore", "trinitycore", "console", "libarary"],
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/darki73/trinitycore-console/issues",
+        "source": "https://github.com/darki73/trinitycore-console"
+    },
     "authors": [
         {
             "name": "Zhivolupov Ivan",
