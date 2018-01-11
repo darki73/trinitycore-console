@@ -25,15 +25,15 @@ That is it. Now you can use the library!
 
 ### Available Methods
 Current implementation of the console client has the following ***'endpoints'***:  
-1. **account()** - Allows you to perform various operations on specific account
-2. **bnet()** - Allows you to manage related battle.net settings
-3. **character()** - Allows you to perform various operations on specific settings
-4. **gm()** - Allows you to 'talk' to GMs
-5. **guild()** - Allows you to manage different guild specific settings
-6. **lfg()** - Provides information about the LFG system
-7. **reset()** - Allows you to reset different aspects of the character (or, all characters on the server)
-8. **server()** - Allows you to manage different server related settings
-9. **send()** - Allows you to send in-game mail
+1. **[account()](#console-account)** - Allows you to perform various operations on specific account
+2. **[bnet()](#console-bnet)** - Allows you to manage related battle.net settings
+3. **[character()](#console-character)** - Allows you to perform various operations on specific settings
+4. **[gm()](#console-gm)** - Allows you to 'talk' to GMs
+5. **[guild()](#console-guild)** - Allows you to manage different guild specific settings
+6. **[lfg()](#console-lfg)** - Provides information about the LFG system
+7. **[reset()](#console-reset)** - Allows you to reset different aspects of the character (or, all characters on the server)
+8. **[server()](#console-server)** - Allows you to manage different server related settings
+9. **[send()](#console-send)** - Allows you to send in-game mail
 
 
 #### Client Options
@@ -167,7 +167,7 @@ Current implementation of the console client has the following ***'endpoints'***
 `$result = $console->reset()->all(string $type);`
 
 ### $console->send()
-* **items** - Send Items To The Player  
+* **items** - Send Items To The Player *(This method require you to also import freedomcore/trinitycore-support library)*  
 `$console->send()->items(string $playerName, string $mailSubject, string $mailText, Items $items);`
 * **mail** - Send mail to the player  
 `$console->send()->mail(string $playerName, string $mailSubject, string $mailText);`
