@@ -10,7 +10,8 @@ $server = $console->server();
  * @param int $minutes
  * @return int
  */
-function minutesToSeconds(int $minutes) : int {
+function minutesToSeconds(int $minutes) : int
+{
     return $minutes * 60;
 }
 
